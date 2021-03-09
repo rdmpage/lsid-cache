@@ -47,7 +47,7 @@ foreach ($files1 as $directory)
 				$xml = file_get_contents($full_filename);
 				
 				// make sure XML document is on one line by replacing end of lines 
-				$xml = preg_replace("/\R/", "", $xml) . "\n";
+				$xml = preg_replace("/\R/", " ", $xml) . "\n";
 							
 				$contents .= $xml;
 			}
