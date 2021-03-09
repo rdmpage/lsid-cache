@@ -42,15 +42,57 @@ else
 // Resolve LSID
 
 // try to get LSID from disk
+$xml = '';
 
+if (preg_match('/urn:lsid:(?<domain>[^:]+):(?<type>[^:]+):(?<id>.*)/', $lsid, $m))
+{
+	$path_array = explode(".", $m['domain']);
+	$path_array = array_reverse($path_array);
+	$path_array[] = $m['type'];
+	
+	// local identifier
+	$id = $m['id'];	
+	$integer_id = preg_replace('/-\d+$/', '', $id);
+	
+	// map to location of archive
+	$dir_id = floor($integer_id / 10000);
+	$gz_id = floor($integer_id / 1000);
+	
+	$path = 'lsid/' . join('/', $path_array) . '/' . $dir_id . '/' . $gz_id . '.xml.gz';
+		
+	if (file_exists($path))
+	{
+		// Explode archive, find line with record for LSID	
+		$lines = gzfile($path);
+	
+		//print_r($lines);
 
-$filename = 'test.xml';
+		$xml = '';
 
+		$n = count($lines);
 
+		for ($i = 0;$i < $n; $i++)
+		{
+			if (preg_match('/' . $lsid . '/', $lines[$i]))
+			{
+				$xml = $lines[$i];
+				break;
+			}
+		}
+	}
+	
+}
+
+if ($xml == '')
+{
+	header("HTTP/1.0 404 Not Found");
+	echo "LSID \"$lsid\" not found";
+	exit;
+}
 
 $graph = new \EasyRdf\Graph();
 
-$graph->parseFile($filename);
+$graph->parse($xml);
 output($graph, $format);
 
     
