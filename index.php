@@ -24,13 +24,64 @@ if (isset($_GET['lsid']))
 else
 {
 	// No LSID so have welcome page here
+	
+	$example_lsid = 'urn:lsid:organismnames.com:name:1776318';
 ?>
 
 <html>
 	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-	<h1>Life Science Identifiers (LSID) for taxonomic names</h1>
+	<div class="container">
+	<h1>Life Science Identifier (LSID) Resolver<small>Persistent identifiers for taxonomic names</small></h1>
+	<p><a href="http://www.lsid.info">Life Sciences Identifier (LSID)</a> is a type of persistent identifier
+	adopted by several biodiversity informatics projects, notably taxonomic name databases. 
+	When a LSID is resolved it returns information about the corresponding entity in 
+	<a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a>. For a variety of reasons LSIDs failed to gain much traction as a persistent identifier. 
+	They are non-trivial to set up, require specialised software to resolve, and return RDF rather than human-readable content. </p>
+	<p>
+	However there are millions of LSIDs for taxonomic names "in the wild", and they continue to be minted for new names. 
+	This service aims to make LSIDs resolvable by acting as a cache for LSID metadata and providing a simple
+	interface for their resolution.</p>
+
+	<p>Currently the following LSIDs are supported:</p>
+	
+	<ul>
+		<li>Index of Organisms Names (ION), e.g. <a href="./urn:lsid:organismnames.com:name:1776318/jsonld">urn:lsid:organismnames.com:name:1776318</a></li>
+		<li>International Plant Names Index (IPNI), e.g. <a href="./urn:lsid:ipni.org:names:298405-1/jsonld">urn:lsid:ipni.org:names:298405-1</a></li>
+		<li>Index Fungorum, e.g. <a href="./urn:lsid:indexfungorum.org:names:356289/jsonld">urn:lsid:indexfungorum.org:names:356289</a></li>
+	</ul>
+	
+	<h2>How to resolve a LSID</h2>
+	
+	<p>To resolve a LSID, such as <mark><?php echo $example_lsid; ?></mark> you just
+	append it to this server address, i.e. 
+	<mark><?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/"; ?></mark>
+	creating the URL	
+	<mark><?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/" . $example_lsid; ?></mark>. 
+	</p>
+	<p>By default the LSID metadata is returned in RDFXML. You can ask for other formats by appending "/" and then the name of the format.</p>
+	
+
+	<table>
+	
+	 <caption>Supported formats</caption>
+	 <thead>
+	<tr><th>Name</th><th>MIME type</th><th>Example</th></tr>
+	<thead>
+	<tbody>
+	<tr><td>rdfxml</td><td>application/rdf+xml</td><td><a href="./<?php echo $example_lsid; ?>/rdfxml"><?php echo $example_lsid; ?>/rdfxml</td></tr>
+	<tr><td>jsonld</td><td>application/ld+json</td><td><a href="./<?php echo $example_lsid; ?>/jsonld"><?php echo $example_lsid; ?>/jsonld</td></tr>
+	<tr><td>n3</td><td>text/n3</td><td><a href="./<?php echo $example_lsid; ?>/n3"><?php echo $example_lsid; ?>/n3</td></tr>
+	<tr><td>ntriples</td><td>application/n-triples</td><td><a href="./<?php echo $example_lsid; ?>/ntriples"><?php echo $example_lsid; ?>/ntriples</td></tr>
+	<tr><td>turtle</td><td>text/turtle</td><td><a href="./<?php echo $example_lsid; ?>/turtle"><?php echo $example_lsid; ?>/turtle</td></tr>
+	<tr><td>dot</td><td>text/vnd.graphviz</td><td><a href="./<?php echo $example_lsid; ?>/dot"><?php echo $example_lsid; ?>/dot</td></tr>
+	</tbody>
+	</table>
+
+	</div>
 	</body>
 </html>
 
