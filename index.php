@@ -23,7 +23,19 @@ if (isset($_GET['lsid']))
 }
 else
 {
-	echo "hi";
+	// No LSID so have welcome page here
+?>
+
+<html>
+	<head>
+	</head>
+	<body>
+	<h1>Life Science Identifiers (LSID) for taxonomic names</h1>
+	</body>
+</html>
+
+
+<?	
 	exit();
 }
 
@@ -94,8 +106,6 @@ $graph = new \EasyRdf\Graph();
 
 $graph->parse($xml);
 output($graph, $format);
-
-    
 
 
 //----------------------------------------------------------------------------------------
