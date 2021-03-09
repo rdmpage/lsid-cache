@@ -36,6 +36,16 @@ else
 	<body>
 	<div class="container">
 	<h1>Life Science Identifier (LSID) Resolver<small>Persistent identifiers for taxonomic names</small></h1>
+	
+	<form action=".">
+	<div class="row">
+  <input type="search" style="width:80%;" id="lsid" name="lsid" placeholder="urn:lsid:organismnames.com:name:1776318"/>
+  <input type="hidden" name="format" value="jsonld" />
+  <input class="primary" type="submit" value="Resolve" />
+  </div>
+	</form>
+	
+	
 	<p><a href="http://www.lsid.info">Life Sciences Identifier (LSID)</a> is a type of persistent identifier
 	adopted by several biodiversity informatics projects, notably taxonomic name databases. 
 	When a LSID is resolved it returns information about the corresponding entity in 
