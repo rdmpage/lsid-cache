@@ -1,0 +1,10 @@
+{
+    "name": "rpage/lsid-cache",
+    "authors": [
+        {
+            "name": "Roderic Page",
+            "email": "rdmpage@gmail.com"
+        }
+    ],
+    "require": {}
+}
