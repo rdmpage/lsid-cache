@@ -15,31 +15,27 @@ error_reporting(E_ALL);
 \EasyRdf\Format::unregister('sparql-json');
 
 
-// path should be of the form /wfo-id/format or /terms/
-$path_parts = explode('/', $_SERVER["REQUEST_URI"]);
-array_shift($path_parts); // lose the first blank one
-
-// do the welcome page if there is no LSID
-if(strlen($path_parts[0]) == 0){
-    // include('welcome.php');
-    echo "Hi";
-    exit;
-}
-
-$format = get_format($path_parts);
-
 $lsid = '';
 
-// first argument is the LSID
-if(preg_match('/^urn:lsid:\w+\.[a-z]{3}:\w+:.*/i', $path_parts[0]))
+if (isset($_GET['lsid']))
 {
-    // LSID
-    $lsid  = $path_parts[0];
+	$lsid = $_GET['lsid'];
+}
+else
+{
+	echo "hi";
+	exit();
+}
+
+
+if(preg_match('/^urn:lsid:\w+\.[a-z]{3}:\w+:.*/i', $lsid))
+{
+	$format = get_format($lsid);
 }
 else
 {
     header("HTTP/1.0 400 Bad Request");
-    echo "Unrecognised LSID format: \"{$path_parts[0]}\"";
+    echo "Unrecognised LSID format: \"$lsid\"";
     exit;
 }
 
@@ -48,7 +44,7 @@ else
 // try to get LSID from disk
 
 
-$filename = 'i.xml';
+$filename = 'test.xml';
 
 
 
@@ -61,14 +57,25 @@ output($graph, $format);
 
 
 //----------------------------------------------------------------------------------------
-function get_format($path_parts){
+function get_format($lsid)
+{
         
     $format_string = null;
     $formats = \EasyRdf\Format::getFormats();
-
-    // if we don't have any format in URL
-    if(count($path_parts) < 2 || strlen($path_parts[1]) < 1){
-
+    
+    // Get it from URL
+    if (isset($_GET['format']))
+    {
+       if(in_array($_GET['format'], $formats)){
+            $format_string = $_GET['format'];
+        }else{
+            header("HTTP/1.0 400 Bad Request");
+            echo "Unrecognised data format \"{$_GET['format']}\"";
+            exit;
+        }    
+    }
+    else
+    {
         // try and get it from the http header
         $headers = getallheaders();
         if(isset($headers['Accept'])){
@@ -98,26 +105,20 @@ function get_format($path_parts){
         // if the format is missing we redirect to the default format
         // always 303 redirect from the core object URIs
         $redirect_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
-            . "://$_SERVER[HTTP_HOST]/"
-            . $path_parts[0]
-            . '/'
-            . $format_string;
+            . "://$_SERVER[HTTP_HOST]/";
+            
+        // debugging on local server
+        if ("$_SERVER[HTTP_HOST]" == 'localhost')
+        {
+   			$redirect_url .= '~rpage/lsid-cache/';
+   		}
+            
+            
+          $redirect_url .= $lsid . '/' . $format_string;
 
             header("Location: $redirect_url",TRUE,303);
             echo "Found: Redirecting to data";
             exit;
-
-
-    }else{
-
-        // we have a format in the url string
-        if(in_array($path_parts[1], $formats)){
-            $format_string = $path_parts[1];
-        }else{
-            header("HTTP/1.0 400 Bad Request");
-            echo "Unrecognised data format \"{$path_parts[1]}\"";
-            exit;
-        }
 
     }
 
@@ -140,6 +141,8 @@ function output($graph, $format_string){
     }
     
     $data = $serialiser->serialise($graph, $format_string);
+    
+    // do any post-processing here...
     
     header('Content-Type: ' . $format->getDefaultMimeType());
 

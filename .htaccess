@@ -1,0 +1,12 @@
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+</IfModule>
+
+RewriteEngine on
+
+RewriteBase /
+#RewriteBase /~rpage/lsid-cache/
+
+RewriteRule ^(urn:lsid:.+)/([a-z]+)$ index.php?lsid=$1&format=$2 [NC,L]
+RewriteRule ^(urn:lsid:.+)$ index.php?lsid=$1 [NC,L]
+
