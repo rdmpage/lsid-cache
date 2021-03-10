@@ -36,6 +36,8 @@ else
 	<body>
 	<div class="container">
 	<h1>Life Science Identifier (LSID) Resolver<small>Persistent identifiers for taxonomic names</small></h1>
+
+	<p>A project by Rod Page, source code on <a href="https://github.com/rdmpage/lsid-cache">GitHub</a>.</p>
 	
 	<form action=".">
 	<div class="row">
@@ -73,8 +75,8 @@ else
 	creating the URL	
 	<mark><?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/" . $example_lsid; ?></mark>. 
 	</p>
-	<p>By default the LSID metadata is returned in RDFXML. You can ask for other formats by appending "/" and then the name of the format.</p>
-	
+	<p>By default the LSID metadata is returned in RDFXML. You can ask for other formats by appending "/" and then the name of the format,
+	or by using content negotiation.</p>	
 
 	<table>
 	
