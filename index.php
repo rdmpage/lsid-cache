@@ -32,6 +32,11 @@ else
 	<head>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+		body {
+			padding:20px;
+		}
+		</style>
 	</head>
 	<body>
 	<div class="container">
@@ -256,9 +261,41 @@ function output($graph, $format_string){
         $serialiser->setAttribute('rankdir', 'LR');
     }
     
-    $data = $serialiser->serialise($graph, $format_string);
+    $options = array();
     
-    // do any post-processing here...
+    if ($format_string == 'jsonld')
+    {
+    	$context = new stdclass;
+		
+		// $context->{'@vocab'} = "http://rs.tdwg.org/ontology/voc/TaxonName#";
+		
+		// TDWG
+		$context->tn 		= "http://rs.tdwg.org/ontology/voc/TaxonName#";
+		$context->tcom 		= "http://rs.tdwg.org/ontology/voc/Common#";
+		$context->tteam 	= "http://rs.tdwg.org/ontology/voc/Team#";
+		$context->tpub 		= "http://rs.tdwg.org/ontology/voc/PublicationCitation#";
+		
+		// Dublin Core
+		$context->dc 		= "http://purl.org/dc/elements/1.1/";
+		$context->dcterms 	= "http://purl.org/dc/terms/";
+		
+		// RDF and OWL
+		$context->rdfs 		= "http://www.w3.org/2000/01/rdf-schema#";
+		$context->owl		= "http://www.w3.org/2002/07/owl#";		
+		
+		// Frame document (assume it is a taxon name for now)
+		$frame = (object)array(
+			'@context' => $context,
+			'@type' => 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName'
+		);
+				
+		$options['context'] = $context;
+		$options['compact'] = true;
+		$options['frame']= $frame;
+    }    
+    
+    
+    $data = $serialiser->serialise($graph, $format_string, $options);
     
     header('Content-Type: ' . $format->getDefaultMimeType());
 
