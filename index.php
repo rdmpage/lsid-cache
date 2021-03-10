@@ -58,12 +58,13 @@ else
 
 	<p>Currently the following LSIDs are supported:</p>
 	
-	<ul>
-		<li>Index of Organisms Names (ION), e.g. <a href="./urn:lsid:organismnames.com:name:1776318/jsonld">urn:lsid:organismnames.com:name:1776318</a></li>
-		<li>International Plant Names Index (IPNI), e.g. <a href="./urn:lsid:ipni.org:names:298405-1/jsonld">urn:lsid:ipni.org:names:298405-1</a></li>
-		<li>Index Fungorum, e.g. <a href="./urn:lsid:indexfungorum.org:names:356289/jsonld">urn:lsid:indexfungorum.org:names:356289</a></li>
-	</ul>
-	
+	<table>
+	<tr><th></th><th>Source</th><th>Example</th></tr>
+	<tr><td><img width="48" src="images/ion.svg"></td><td>Index of Organisms Names (ION)</td><td><a href="./urn:lsid:organismnames.com:name:1776318/jsonld">urn:lsid:organismnames.com:name:1776318</a></td></tr>
+	<tr><td><img width="48" src="images/ipni.svg"></td><td>International Plant Names Index (IPNI)</td><td><a href="./urn:lsid:ipni.org:names:298405-1/jsonld">urn:lsid:ipni.org:names:298405-1</a></td></tr>
+	<tr><td><img width="48" src="images/if.svg"></td><td>Index Fungorum</td><td><a href="./urn:lsid:indexfungorum.org:names:356289/jsonld">urn:lsid:indexfungorum.org:names:356289</a></td></tr>
+	</table>
+		
 	<h2>How to resolve a LSID</h2>
 	
 	<p>To resolve a LSID, such as <mark><?php echo $example_lsid; ?></mark> you just
