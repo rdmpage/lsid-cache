@@ -135,6 +135,8 @@ if (preg_match('/urn:lsid:(?<domain>[^:]+):(?<type>[^:]+):(?<id>.*)/', $lsid, $m
 	$id = $m['id'];	
 	$integer_id = preg_replace('/-\d+$/', '', $id);
 	
+	// echo $integer_id ;
+	
 	// map to location of archive
 	$dir_id = floor($integer_id / 10000);
 	$gz_id = floor($integer_id / 1000);
@@ -154,7 +156,8 @@ if (preg_match('/urn:lsid:(?<domain>[^:]+):(?<type>[^:]+):(?<id>.*)/', $lsid, $m
 
 		for ($i = 0;$i < $n; $i++)
 		{
-			if (preg_match('/' . $lsid . '/', $lines[$i]))
+			// Need to handle cases (e.g., ION) where the URI is not a LSID but simply the integer id
+			if (preg_match('/=\s*"(' . $lsid . '|' . $id . ')"/', $lines[$i]))
 			{
 				$xml = $lines[$i];
 				break;
