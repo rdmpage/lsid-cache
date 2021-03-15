@@ -174,6 +174,29 @@ if ($xml == '')
 	exit;
 }
 
+// Do any post processing of XML that we need to do...
+if (preg_match('/urn:lsid:(?<domain>[^:]+)/', $lsid, $m))
+{
+	
+	switch ($m['domain'])
+	{
+		// ION may lack LSID prefix
+		case 'organismnames.com':
+			$xml = preg_replace('/tdwg_tn:TaxonName rdf:about="(\d+)"/', 'tdwg_tn:TaxonName rdf:about="urn:lsid:organismnames.com:name:$1"', $xml);
+			break;
+			
+		default:
+			break;
+	}
+}
+
+if (0)
+{
+	echo '<pre>';
+	echo htmlentities($xml);
+	echo '</pre>';
+}
+
 $graph = new \EasyRdf\Graph();
 
 $graph->parse($xml);
