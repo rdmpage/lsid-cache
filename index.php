@@ -130,7 +130,7 @@ if (preg_match('/urn:lsid:(?<domain>[^:]+):(?<type>[^:]+):(?<id>.*)/', $lsid, $m
 	$path_array = explode(".", $m['domain']);
 	$path_array = array_reverse($path_array);
 	$path_array[] = $m['type'];
-	
+		
 	// local identifier
 	$id = $m['id'];	
 	$integer_id = preg_replace('/-\d+$/', '', $id);
@@ -142,7 +142,7 @@ if (preg_match('/urn:lsid:(?<domain>[^:]+):(?<type>[^:]+):(?<id>.*)/', $lsid, $m
 	$gz_id = floor($integer_id / 1000);
 	
 	$path = 'lsid/' . join('/', $path_array) . '/' . $dir_id . '/' . $gz_id . '.xml.gz';
-		
+	
 	if (file_exists($path))
 	{
 		// Explode archive, find line with record for LSID	
@@ -157,7 +157,7 @@ if (preg_match('/urn:lsid:(?<domain>[^:]+):(?<type>[^:]+):(?<id>.*)/', $lsid, $m
 		for ($i = 0;$i < $n; $i++)
 		{
 			// Need to handle cases (e.g., ION) where the URI is not a LSID but simply the integer id
-			if (preg_match('/=\s*"(' . $lsid . '|' . $id . ')"/', $lines[$i]))
+			if (preg_match('/about=\s*"(' . $lsid . '|' . $id . ')"/', $lines[$i]))
 			{
 				$xml = $lines[$i];
 				break;
