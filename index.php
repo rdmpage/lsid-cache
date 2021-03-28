@@ -200,7 +200,7 @@ if (0)
 $graph = new \EasyRdf\Graph();
 
 $graph->parse($xml);
-output($graph, $format);
+output($graph, $lsid, $format);
 
 
 //----------------------------------------------------------------------------------------
@@ -274,7 +274,7 @@ function get_format($lsid)
 }
 
 //----------------------------------------------------------------------------------------
-function output($graph, $format_string){
+function output($graph, $lsid, $format_string){
 
     $format = \EasyRdf\Format::getFormat($format_string);
 
@@ -301,25 +301,39 @@ function output($graph, $format_string){
 		$context->tteam 	= "http://rs.tdwg.org/ontology/voc/Team#";
 		$context->tpub 		= "http://rs.tdwg.org/ontology/voc/PublicationCitation#";
 		
+		// Darwin Core
+		$context->dwc 		= "http://rs.tdwg.org/dwc/terms/";
+		
 		// Dublin Core
 		$context->dc 		= "http://purl.org/dc/elements/1.1/";
 		$context->dcterms 	= "http://purl.org/dc/terms/";
 		
 		// RDF and OWL
 		$context->rdfs 		= "http://www.w3.org/2000/01/rdf-schema#";
-		$context->owl		= "http://www.w3.org/2002/07/owl#";		
+		$context->owl		= "http://www.w3.org/2002/07/owl#";	
 		
-		// Frame document (assume it is a taxon name for now)
-		$frame = (object)array(
-			'@context' => $context,
-			'@type' => 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName'
-		);
-				
+		// Context	
 		$options['context'] = $context;
 		$options['compact'] = true;
-		$options['frame']= $frame;
-    }    
-    
+		
+		// Frame document if we can (need to know document type)		
+		$name_type = 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName';
+		
+		// Worms doesn't have rdf:type so don't frame
+		if (preg_match('/marinespecies.org:taxname:/', $lsid))
+		{
+			$name_type = 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName';		
+		}
+		else
+		{
+			$frame = (object)array(
+				'@context' => $context,
+				'@type' => $name_type
+			);
+				
+			$options['frame']= $frame;
+		}
+    }
     
     $data = $serialiser->serialise($graph, $format_string, $options);
     

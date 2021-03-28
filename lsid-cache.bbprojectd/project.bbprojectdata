@@ -6,6 +6,7 @@
 	<array>
 		<string>AB567BD9-0CCD-459A-BEEB-B127F3804FD1</string>
 		<string>381130C2-340A-46AF-9E87-5224BF9BEC63</string>
+		<string>FBAEE401-2100-4033-93DC-5C58B6133982</string>
 		<string>A37663FA-5B6B-439A-9F6D-1BA7D0F6715F</string>
 		<string>DA62A321-E5D2-40C7-A313-A4F2CF2B0F03</string>
 	</array>
@@ -206,6 +207,54 @@
 			</dict>
 			<key>ItemName</key>
 			<string>make.php</string>
+			<key>ItemType</key>
+			<string>FileReference</string>
+			<key>UserOverrideItemName</key>
+			<true/>
+		</dict>
+		<key>FBAEE401-2100-4033-93DC-5C58B6133982</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>BookmarkData</key>
+				<data>
+				Ym9va+gCAAAAAAQQMAAAAJ/k6PSnH5DedJwv2aN3yVXy
+				pu82FSfTXSEzbXW0rW+j5AEAAAQAAAADAwAAAAgAKAUA
+				AAABAQAAVXNlcnMAAAAFAAAAAQEAAHJwYWdlAAAABQAA
+				AAEBAABTaXRlcwAAAAoAAAABAQAAbHNpZC1jYWNoZQAA
+				DQAAAAEBAABjb21wb3Nlci5qc29uAAAAFAAAAAEGAAAQ
+				AAAAIAAAADAAAABAAAAAVAAAAAgAAAAEAwAAEGcCAAAA
+				AAAIAAAABAMAAIV0DQAAAAAACAAAAAQDAAAEVkwAAAAA
+				AAgAAAAEAwAAUIM0BgMAAAAIAAAABAMAAEaENAYDAAAA
+				FAAAAAEGAACIAAAAmAAAAKgAAAC4AAAAyAAAAAgAAAAA
+				BAAAQcL7x3PqAhgYAAAAAQIAAAEAAAAAAAAADwAAAAAA
+				AAAAAAAAAAAAAAgAAAAEAwAAAwAAAAAAAAAEAAAAAwMA
+				APUBAAAIAAAAAQkAAGZpbGU6Ly8vDAAAAAEBAABNYWNp
+				bnRvc2ggSEQIAAAABAMAAADgBANpAAAACAAAAAAEAABB
+				vt1dYgAAACQAAAABAQAAMjVFNDI4NkQtNzEyQy0zODk5
+				LUI0M0YtNUQzRjZBOEJEMTIxGAAAAAECAACBAAAAAQAA
+				AO8TAAABAAAAAAAAAAAAAAABAAAAAQEAAC8AAAAAAAAA
+				AQUAAMwAAAD+////AQAAAAAAAAAQAAAABBAAAGwAAAAA
+				AAAABRAAANgAAAAAAAAAEBAAAAQBAAAAAAAAQBAAAPQA
+				AAAAAAAAAiAAANABAAAAAAAABSAAAEABAAAAAAAAECAA
+				AFABAAAAAAAAESAAAIQBAAAAAAAAEiAAAGQBAAAAAAAA
+				EyAAAHQBAAAAAAAAICAAALABAAAAAAAAMCAAANwBAAAA
+				AAAAAcAAACQBAAAAAAAAEcAAACAAAAAAAAAAEsAAADQB
+				AAAAAAAAENAAAAQAAAAAAAAA
+				</data>
+				<key>FileURL</key>
+				<string>file:///Users/rpage/Sites/lsid-cache/composer.json</string>
+				<key>HasSecurityScope</key>
+				<true/>
+				<key>RelativePath</key>
+				<string>./composer.json</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>composer.json</string>
 			<key>ItemType</key>
 			<string>FileReference</string>
 			<key>UserOverrideItemName</key>
