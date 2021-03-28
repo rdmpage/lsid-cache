@@ -7,26 +7,30 @@ $caches = array(
 	'ipni_names' => '/Volumes/Samsung_T5/rdf-archive/ipni/rdf',
 	'ipni_authors' => '/Volumes/Samsung_T5/rdf-archive/ipni/authors',
 	'ion' => '/Volumes/Samsung_T5/rdf-archive/ion/rdf',
+	'worms' => '/Volumes/Samsung_T5/rdf-archive/worms/rdf',
 	'wsc' => '/Volumes/Samsung_T5/rdf-archive/nmbe/rdf',
 );	
 
-
+// Path to local storage of LSID is the reverse of the domain name
 $domain_path = array(
 	'indexfungorum' => array('org', 'indexfungorum', 'names'),
 	'ion' => array('com', 'organismnames', 'name'),
 	'ipni_names' => array('org', 'ipni', 'names'),
-
+	'worms' => array('org', 'marinespecies', 'taxname'),
 );
 
 
 $database = 'ipni_names';
 //$database = 'indexfungorum';
 //$database = 'ion';
+$database = 'worms';
 
 // Fetch XML files
 $basedir = $caches[$database];
 
 $files1 = scandir($basedir);
+
+$files1 = array('1311');
 
 foreach ($files1 as $directory)
 {
