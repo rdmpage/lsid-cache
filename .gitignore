@@ -3,3 +3,6 @@
 Tester.request
 
 /to-do/
+
+# LSID data that makes slug too large
+/lsid/org/marinespecies
