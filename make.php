@@ -30,7 +30,7 @@ $basedir = $caches[$database];
 
 $files1 = scandir($basedir);
 
-$files1 = array('1311');
+// $files1 = array('1311');
 
 foreach ($files1 as $directory)
 {
