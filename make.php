@@ -22,15 +22,19 @@ $domain_path = array(
 
 $database = 'ipni_names';
 //$database = 'indexfungorum';
-//$database = 'ion';
-$database = 'worms';
+$database = 'ion';
+//$database = 'worms';
 
 // Fetch XML files
 $basedir = $caches[$database];
 
 $files1 = scandir($basedir);
 
-// $files1 = array('1311');
+$files1 = array();
+for ($i = 5500; $i <= 5562; $i++)
+{
+	$files1[] = $i;
+}
 
 foreach ($files1 as $directory)
 {
@@ -38,6 +42,8 @@ foreach ($files1 as $directory)
 	if (preg_match('/^\d+$/', $directory))
 	{	
 		$files2 = scandir($basedir . '/' . $directory);
+		
+		print_r($files2);
 
 		// individual XML files
 		
