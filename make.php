@@ -22,7 +22,7 @@ $domain_path = array(
 
 $database = 'ipni_names';
 //$database = 'indexfungorum';
-$database = 'ion';
+//$database = 'ion';
 //$database = 'worms';
 
 // Fetch XML files
@@ -30,8 +30,9 @@ $basedir = $caches[$database];
 
 $files1 = scandir($basedir);
 
+// add/redo a specific range
 $files1 = array();
-for ($i = 5500; $i <= 5562; $i++)
+for ($i = 77194; $i <= 77218; $i++)
 {
 	$files1[] = $i;
 }
