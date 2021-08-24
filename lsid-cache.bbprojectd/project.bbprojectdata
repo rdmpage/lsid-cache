@@ -10,6 +10,7 @@
 		<string>A37663FA-5B6B-439A-9F6D-1BA7D0F6715F</string>
 		<string>DA62A321-E5D2-40C7-A313-A4F2CF2B0F03</string>
 		<string>0362490A-8F8F-4B52-98F2-FCEFFFB2C7FB</string>
+		<string>527715C8-0AFE-48A3-AE3D-3EA5D2060D65</string>
 	</array>
 	<key>ProjectItems</key>
 	<dict>
@@ -106,6 +107,57 @@
 			</dict>
 			<key>ItemName</key>
 			<string>.htaccess</string>
+			<key>ItemType</key>
+			<string>FileReference</string>
+			<key>UserOverrideItemName</key>
+			<true/>
+		</dict>
+		<key>527715C8-0AFE-48A3-AE3D-3EA5D2060D65</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>BookmarkData</key>
+				<data>
+				Ym9va0gDAAAAAAQQMAAAAFMM8ibJ24IQme/n4Yxd4+8C
+				0HA2VZP6jR9nQHN8pmejOAIAAAQAAAADAwAAAAgAKAUA
+				AAABAQAAVXNlcnMAAAAFAAAAAQEAAHJwYWdlAAAABQAA
+				AAEBAABTaXRlcwAAAAoAAAABAQAAbHNpZC1jYWNoZQAA
+				BAAAAAEBAABqdW5rDgAAAAEBAAB0b190cmlwbGVzLnBo
+				cAAAGAAAAAEGAAAQAAAAIAAAADAAAABAAAAAVAAAAGAA
+				AAAIAAAABAMAABBnAgAAAAAACAAAAAQDAACFdA0AAAAA
+				AAgAAAAEAwAABFZMAAAAAAAIAAAABAMAAFCDNAYDAAAA
+				CAAAAAQDAACUY90HAwAAAAgAAAAEAwAAtvfcBwMAAAAY
+				AAAAAQYAAJgAAACoAAAAuAAAAMgAAADYAAAA6AAAAAgA
+				AAAABAAAQcL3UiPQAxsYAAAAAQIAAAEAAAAAAAAADwAA
+				AAAAAAAAAAAAAAAAAAgAAAAEAwAABAAAAAAAAAAEAAAA
+				AwMAAPUBAAAIAAAAAQkAAGZpbGU6Ly8vDAAAAAEBAABN
+				YWNpbnRvc2ggSEQIAAAABAMAAADgBANpAAAACAAAAAAE
+				AABBvt1dYgAAACQAAAABAQAAMjVFNDI4NkQtNzEyQy0z
+				ODk5LUI0M0YtNUQzRjZBOEJEMTIxGAAAAAECAACBAAAA
+				AQAAAO8TAAABAAAAAAAAAAAAAAABAAAAAQEAAC8AAAAA
+				AAAAAQUAABoAAAABAQAATlNVUkxEb2N1bWVudElkZW50
+				aWZpZXJLZXkAAAQAAAADAwAA66cBANgAAAD+////AQAA
+				AAAAAAARAAAABBAAAHgAAAAAAAAABRAAAPgAAAAAAAAA
+				EBAAACgBAAAAAAAAQBAAABgBAAAAAAAAAiAAAPQBAAAA
+				AAAABSAAAGQBAAAAAAAAECAAAHQBAAAAAAAAESAAAKgB
+				AAAAAAAAEiAAAIgBAAAAAAAAEyAAAJgBAAAAAAAAICAA
+				ANQBAAAAAAAAMCAAAAACAAAAAAAAAcAAAEgBAAAAAAAA
+				EcAAACAAAAAAAAAAEsAAAFgBAAAAAAAAENAAAAQAAAAA
+				AAAACAIAgCwCAAAAAAAA
+				</data>
+				<key>FileURL</key>
+				<string>file:///Users/rpage/Sites/lsid-cache/junk/to_triples.php</string>
+				<key>HasSecurityScope</key>
+				<true/>
+				<key>RelativePath</key>
+				<string>./junk/to_triples.php</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>to_triples.php</string>
 			<key>ItemType</key>
 			<string>FileReference</string>
 			<key>UserOverrideItemName</key>

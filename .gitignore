@@ -6,3 +6,5 @@ Tester.request
 
 # LSID data that makes slug too large
 /lsid/org/marinespecies/
+
+/tmp/*.xml
