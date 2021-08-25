@@ -1,13 +1,19 @@
 # Oxigraph
 
+https://crates.io/crates/oxigraph_server
+
 
 ## Installing
 
-Create a DigitalOcean droplet manually, open console, and then:
+Create a DigitalOcean droplet manually, open console, and then install Docker:
 
 ```
 apt install docker.io
+```
 
+Then start the Oxigraph server
+
+```
 docker run -d --init --rm -v $PWD/data:/data -p 7878:7878 oxigraph/oxigraph -b 0.0.0.0:7878 -f /data
 ```
 
@@ -22,3 +28,8 @@ curl http://143.198.96.145:7878/store?default -H 'Content-Type:application/rdf+x
 ## Remove triples
 
 curl http://143.198.96.145:7878/update -X POST -H 'Content-Type: application/sparql-update' --data 'DELETE WHERE { ?s ?p ?o }' 
+
+
+## Clear named graph
+
+curl http://143.198.96.145:7878/update -X POST -H 'Content-Type: application/sparql-update' --data 'CLEAR GRAPH <http://www.indexfungorum.org>'

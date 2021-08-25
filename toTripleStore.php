@@ -2,9 +2,11 @@
 
 // For a data source extract all LSIDs from our cache and create a single file of triples
 
-require_once('vendor/autoload.php');
+
 
 error_reporting(E_ALL);
+
+require_once('vendor/autoload.php');
 
 $format_string = 'ntriples';
 $format = \EasyRdf\Format::getFormat($format_string);
@@ -22,10 +24,10 @@ $domain_path = array(
 	'worms' => array('org', 'marinespecies', 'taxname'),
 );
 
-
+// Pick a database to use
 $database = 'indexfungorum';
 //$database = 'ion';
-$database = 'ipni_names';
+//$database = 'ipni_names';
 
 $tmp_dir = dirname(__FILE__) . '/tmp';
 
@@ -37,14 +39,16 @@ $files1 = scandir($basedir);
 // debug
 //$files1 = array('7713');
 //$files1 = array('555');
-$files1 = array('80');
-$files1 = array('7714');
+//$files1 = array('12');
+//$files1 = array('7714');
 
 foreach ($files1 as $directory)
 {
 	// modulo 1000 directories
 	if (preg_match('/^\d+$/', $directory))
-	{	
+	{		
+		echo "\n--- $directory ---\n\n";	
+	
 		// gzip files
 		$files2 = scandir($basedir . '/' . $directory);
 		
@@ -59,8 +63,6 @@ foreach ($files1 as $directory)
 			{					
 				$path = $basedir . '/' . $directory . '/' . $archive ;
 				
-				// echo $path . "\n";
-	
 				if (file_exists($path))
 				{
 					// decompress
@@ -126,12 +128,44 @@ foreach ($files1 as $directory)
 					// save
 					file_put_contents($xml_filename, $xml);
 					
-					// send to triple store
-					$command = "curl http://143.198.96.145:7878/store?default -H 'Content-Type:application/rdf+xml' --data-binary '@$xml_filename'";					
-					$retval = 0;
-					system($command, $retval);
+					$upload = true;
+					$use_named_graphs = true;
+					//$upload = false;
+					if ($upload)
+					{
+						// Oxigraph
+						$triple_store_url = 'http://143.198.96.145:7878/store';
+						$named_graph = '?default';
+						$use_named_graphs = false;
+						
+						
+						if ($use_named_graphs)
+						{
+							switch ($database)
+							{
+								case 'indexfungorum':
+									$named_graph = '?graph=http://www.indexfungorum.org';
+									break;
+
+								case 'ipni':
+									break;
+
+								case 'ion':
+									break;
+								
+								default:
+									$named_graph = '?default';
+									break;
+							}	
+						}
 					
-					echo "\nReturn value = $retval\n";
+						// send to triple store
+						$command = "curl '$triple_store_url$named_graph' -H 'Content-Type:application/rdf+xml' --data-binary '@$xml_filename' --progress-bar";					
+						$retval = 0;					
+						system($command, $retval);
+					
+						echo "\nReturn value = $retval\n";						
+					}
 					
 					// clean up
 					// unlink($xml_filename);
