@@ -29,6 +29,10 @@ curl http://143.198.96.145:7878/store?default -H 'Content-Type:application/rdf+x
 
 curl http://143.198.96.145:7878/update -X POST -H 'Content-Type: application/sparql-update' --data 'DELETE WHERE { ?s ?p ?o }' 
 
+### Delete specific triples
+curl http://143.198.96.145:7878/update -X POST -H 'Content-Type: application/sparql-update' --data 'DELETE WHERE { ?s <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICZN> }' 
+
+
 
 ## Clear named graph
 

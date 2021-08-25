@@ -26,7 +26,7 @@ $domain_path = array(
 
 // Pick a database to use
 $database = 'indexfungorum';
-//$database = 'ion';
+$database = 'ion';
 //$database = 'ipni_names';
 
 $tmp_dir = dirname(__FILE__) . '/tmp';
@@ -38,7 +38,7 @@ $files1 = scandir($basedir);
 
 // debug
 //$files1 = array('7713');
-//$files1 = array('555');
+$files1 = array('556');
 //$files1 = array('12');
 //$files1 = array('7714');
 
@@ -98,8 +98,12 @@ foreach ($files1 as $directory)
 							break;
 							
 						case 'ion':
+							// lacks URI as identifier
 							$xml = preg_replace('/tdwg_tn:TaxonName rdf:about="(\d+)"/', 'tdwg_tn:TaxonName rdf:about="urn:lsid:organismnames.com:name:$1"', $xml);						
+							
+							// incorrect capitalisation
 							$xml = preg_replace('/dc:Title/', 'dc:title', $xml);						
+							$xml = preg_replace('/tdwg_co:PublishedIn/', 'tdwg_co:publishedIn', $xml);						
 							break;
 							
 						case 'ipni_names':
@@ -137,8 +141,7 @@ foreach ($files1 as $directory)
 						$triple_store_url = 'http://143.198.96.145:7878/store';
 						$named_graph = '?default';
 						$use_named_graphs = false;
-						
-						
+												
 						if ($use_named_graphs)
 						{
 							switch ($database)
@@ -148,9 +151,11 @@ foreach ($files1 as $directory)
 									break;
 
 								case 'ipni':
+									$named_graph = '?graph=https://www.ipni.org';
 									break;
 
 								case 'ion':
+									$named_graph = '?graph=http://www.organismnames.com';
 									break;
 								
 								default:
