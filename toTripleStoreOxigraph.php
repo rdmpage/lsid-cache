@@ -1,29 +1,7 @@
 <?php
 
-// For a data source extract all LSIDs from our cache and upload to
-// triple store, each archived set of LSIDs is converted into a single XML document.
+// For a data source extract all LSIDs from our cache and create a single file of triples
 
-// errors in IPNI
-
-/*
-1015.xml
-########################################                                  55.9%
-INSERT-WITH-BODY: baseURI=http://165.227.239.159:9999/blazegraph/sparql, Content-Type=application/rdf+xml, context-uri=[]
-java.util.concurrent.ExecutionException: org.openrdf.rio.RDFParseException: The reference to entity "RL95060012" must end with the ';' delimiter. [line 244, column 1086]
-
-Caused by: org.openrdf.rio.RDFParseException: The reference to entity "RL95060012" must end with the ';' delimiter. [line 244, column 1086]
-
-
-326.xml
-################                                                          22.3%
-INSERT-WITH-BODY: baseURI=http://165.227.239.159:9999/blazegraph/sparql, Content-Type=application/rdf+xml, context-uri=[]
-java.util.concurrent.ExecutionException: org.openrdf.rio.RDFParseException: The reference to entity "RL95060012" must end with the ';' delimiter. [line 293, column 1100]
-
-Caused by: org.openrdf.rio.RDFParseException: The reference to entity "RL95060012" must end with the ';' delimiter. [line 293, column 1100]
-
-
-
-*/
 
 
 error_reporting(E_ALL);
@@ -49,7 +27,7 @@ $domain_path = array(
 // Pick a database to use
 $database = 'indexfungorum';
 $database = 'ion';
-$database = 'ipni_names';
+//$database = 'ipni_names';
 
 $tmp_dir = dirname(__FILE__) . '/tmp';
 
@@ -144,29 +122,12 @@ foreach ($files1 as $directory)
 						
 							$xml = preg_replace($regex, '$1', $xml);						
 						
-							$xml = preg_replace('/&\s/', '&amp; ', $xml);	
-							
-							// strip XML header
-							
-							$xml = preg_replace('/<\?xml(.*)<tn:TaxonName/U', '<tn:TaxonName', $xml);
-							$xml = preg_replace('/<\/rdf:RDF>/', '', $xml);
+							$xml = preg_replace('/&\s/', '&amp; ', $xml);						
 							break;
 					
 						default:
 							break;
 					}
-					
-					switch ($database)
-					{
-						case 'ipni_names':
-							$xml = '<?xml version="1.0" encoding="UTF-8"?> <?xml-stylesheet type="text/xsl" href="lsid.rdf.xsl"?> <rdf:RDF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://purl.org/dc/elements/1.1/"  xmlns:dcterms="http://purl.org/dc/terms/" xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#" xmlns:tm="http://rs.tdwg.org/ontology/voc/Team#"     xmlns:tcom="http://rs.tdwg.org/ontology/voc/Common#"     xmlns:p="http://rs.tdwg.org/ontology/voc/Person#"     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#"> ' . "\n" . $xml;					
-							$xml .= '</rdf:RDF>';
-							break;
-							
-						default:
-							break;
-					}					
-					
 					
 					// save
 					file_put_contents($xml_filename, $xml);
@@ -176,7 +137,6 @@ foreach ($files1 as $directory)
 					//$upload = false;
 					if ($upload)
 					{
-						/*
 						// Oxigraph
 						$triple_store_url = 'http://143.198.96.145:7878/store';
 						$named_graph = '?default';
@@ -203,44 +163,13 @@ foreach ($files1 as $directory)
 									break;
 							}	
 						}
-						*/
-						
-						// Blazegraph
-						$triple_store_url = 'http://165.227.239.159:9999/blazegraph/sparql';
-						$named_graph = '';
-						$use_named_graphs = true;
-												
-						if ($use_named_graphs)
-						{
-							switch ($database)
-							{
-								case 'indexfungorum':
-									$named_graph = '?context-uri=http://www.indexfungorum.org';
-									break;
-
-								case 'ipni':
-									$named_graph = '?context-uri=https://www.ipni.org';
-									break;
-
-								case 'ion':
-									$named_graph = '?context-uri=http://www.organismnames.com';
-									break;
-								
-								default:
-									$named_graph = '';
-									break;
-							}	
-						}
-						
 					
 						// send to triple store
 						$command = "curl '$triple_store_url$named_graph' -H 'Content-Type:application/rdf+xml' --data-binary '@$xml_filename' --progress-bar";					
 						$retval = 0;					
 						system($command, $retval);
 					
-						echo "\nReturn value = $retval\n";	
-						
-						sleep(5);					
+						echo "\nReturn value = $retval\n";						
 					}
 					
 					// clean up

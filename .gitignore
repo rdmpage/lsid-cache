@@ -2,12 +2,11 @@
 .DS_Store
 Tester.request
 
-/to-do/
-
 # LSID data that makes slug too large
 /lsid/org/marinespecies/
 
-/tmp/*.xml
-
-/nt/
 /data/
+/junk/
+/nt/
+/tmp/*.xml
+/to-do/
