@@ -8,3 +8,6 @@ Tester.request
 /lsid/org/marinespecies/
 
 /tmp/*.xml
+
+/nt/
+/data/
