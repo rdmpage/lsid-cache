@@ -21,8 +21,8 @@ $domain_path = array(
 
 
 $database = 'ipni_names';
-//$database = 'indexfungorum';
-$database = 'ion';
+$database = 'indexfungorum';
+//$database = 'ion';
 //$database = 'worms';
 
 // Fetch XML files
@@ -40,7 +40,8 @@ if (0)
 	}
 }
 
-if (1)
+// ion
+if (0)
 {
 	// add/redo a specific range
 	$files1 = array();
@@ -49,6 +50,18 @@ if (1)
 		$files1[] = $i;
 	}
 }
+
+// IF
+if (1)
+{
+	// add/redo a specific range
+	$files1 = array();
+	for ($i = 829; $i <= 842; $i++)
+	{
+		$files1[] = $i;
+	}
+}
+
 
 foreach ($files1 as $directory)
 {
