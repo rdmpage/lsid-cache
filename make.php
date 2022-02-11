@@ -21,7 +21,7 @@ $domain_path = array(
 
 
 $database = 'ipni_names';
-//$database = 'indexfungorum';
+$database = 'indexfungorum';
 //$database = 'ion';
 //$database = 'worms';
 
@@ -32,7 +32,7 @@ $files1 = scandir($basedir);
 
 
 // ipni
-if (1)
+if (0)
 {
 	// add/redo a specific range
 	$files1 = array();
@@ -54,11 +54,11 @@ if (0)
 }
 
 // IF
-if (0)
+if (1)
 {
 	// add/redo a specific range
 	$files1 = array();
-	for ($i = 829; $i <= 842; $i++)
+	for ($i = 824; $i <= 824; $i++)
 	{
 		$files1[] = $i;
 	}

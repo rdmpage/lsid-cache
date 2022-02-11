@@ -4,7 +4,7 @@
 <dict>
 	<key>EmbeddedEditorHidden:rpage</key>
 	<false/>
-	<key>ExpandedEditorWidth:rpage:displays([(0, 0), (1440, 900)]:[(-1920, 0), (1920, 1080)])</key>
+	<key>ExpandedEditorWidth:rpage:displays()</key>
 	<integer>664</integer>
 	<key>ExpandedItems:rpage</key>
 	<array/>
@@ -12,42 +12,6 @@
 	<integer>0</integer>
 	<key>OpenDocuments:rpage</key>
 	<array>
-		<dict>
-			<key>BookmarkData</key>
-			<data>
-			Ym9vayADAAAAAAQQMAAAAJ4qljycF1pxE9SowfvqmHBBGWLUsjyE
-			JUswLEii0JXrEAIAAAQAAAADAwAAAAgAKAUAAAABAQAAVXNlcnMA
-			AAAFAAAAAQEAAHJwYWdlAAAABQAAAAEBAABTaXRlcwAAAAoAAAAB
-			AQAAbHNpZC1jYWNoZQAACgAAAAEBAAAuZ2l0aWdub3JlAAAUAAAA
-			AQYAABAAAAAgAAAAMAAAAEAAAABUAAAACAAAAAQDAAAQZwIAAAAA
-			AAgAAAAEAwAAhXQNAAAAAAAIAAAABAMAAARWTAAAAAAACAAAAAQD
-			AABQgzQGAwAAAAgAAAAEAwAAR4Q0BgMAAAAUAAAAAQYAAIQAAACU
-			AAAApAAAALQAAADEAAAACAAAAAAEAABBwvvHdM5BgxgAAAABAgAA
-			AQAAAAAAAAAPAAAAAAAAAAAAAAAAAAAACAAAAAQDAAADAAAAAAAA
-			AAQAAAADAwAA9QEAAAgAAAABCQAAZmlsZTovLy8MAAAAAQEAAE1h
-			Y2ludG9zaCBIRAgAAAAEAwAAAODFMnQAAAAIAAAAAAQAAEG+3V1i
-			AAAAJAAAAAEBAAAyNUU0Mjg2RC03MTJDLTM4OTktQjQzRi01RDNG
-			NkE4QkQxMjEYAAAAAQIAAIEAAAABAAAA7xMAAAEAAAAAAAAAAAAA
-			AAEAAAABAQAALwAAAAAAAAABBQAAGgAAAAEBAABOU1VSTERvY3Vt
-			ZW50SWRlbnRpZmllcktleQAABAAAAAMDAADknAEA2AAAAP7///8B
-			AAAAAAAAABEAAAAEEAAAaAAAAAAAAAAFEAAA1AAAAAAAAAAQEAAA
-			AAEAAAAAAABAEAAA8AAAAAAAAAACIAAAzAEAAAAAAAAFIAAAPAEA
-			AAAAAAAQIAAATAEAAAAAAAARIAAAgAEAAAAAAAASIAAAYAEAAAAA
-			AAATIAAAcAEAAAAAAAAgIAAArAEAAAAAAAAwIAAA2AEAAAAAAAAB
-			wAAAIAEAAAAAAAARwAAAIAAAAAAAAAASwAAAMAEAAAAAAAAQ0AAA
-			BAAAAAAAAADgAQCABAIAAAAAAAA=
-			</data>
-			<key>FileURL</key>
-			<string>file:///Users/rpage/Sites/lsid-cache/.gitignore</string>
-			<key>HasSecurityScope</key>
-			<true/>
-			<key>RelativePath</key>
-			<string>./.gitignore</string>
-			<key>TypeID</key>
-			<string>_CFileLocator</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>BookmarkData</key>
 			<data>
@@ -79,6 +43,42 @@
 			<true/>
 			<key>RelativePath</key>
 			<string>./make.php</string>
+			<key>TypeID</key>
+			<string>_CFileLocator</string>
+			<key>Version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>BookmarkData</key>
+			<data>
+			Ym9vayADAAAAAAQQMAAAAJ4qljycF1pxE9SowfvqmHBBGWLUsjyE
+			JUswLEii0JXrEAIAAAQAAAADAwAAAAgAKAUAAAABAQAAVXNlcnMA
+			AAAFAAAAAQEAAHJwYWdlAAAABQAAAAEBAABTaXRlcwAAAAoAAAAB
+			AQAAbHNpZC1jYWNoZQAACgAAAAEBAAAuZ2l0aWdub3JlAAAUAAAA
+			AQYAABAAAAAgAAAAMAAAAEAAAABUAAAACAAAAAQDAAAQZwIAAAAA
+			AAgAAAAEAwAAhXQNAAAAAAAIAAAABAMAAARWTAAAAAAACAAAAAQD
+			AABQgzQGAwAAAAgAAAAEAwAAR4Q0BgMAAAAUAAAAAQYAAIQAAACU
+			AAAApAAAALQAAADEAAAACAAAAAAEAABBwvvHdM5BgxgAAAABAgAA
+			AQAAAAAAAAAPAAAAAAAAAAAAAAAAAAAACAAAAAQDAAADAAAAAAAA
+			AAQAAAADAwAA9QEAAAgAAAABCQAAZmlsZTovLy8MAAAAAQEAAE1h
+			Y2ludG9zaCBIRAgAAAAEAwAAAODFMnQAAAAIAAAAAAQAAEG+3V1i
+			AAAAJAAAAAEBAAAyNUU0Mjg2RC03MTJDLTM4OTktQjQzRi01RDNG
+			NkE4QkQxMjEYAAAAAQIAAIEAAAABAAAA7xMAAAEAAAAAAAAAAAAA
+			AAEAAAABAQAALwAAAAAAAAABBQAAGgAAAAEBAABOU1VSTERvY3Vt
+			ZW50SWRlbnRpZmllcktleQAABAAAAAMDAADknAEA2AAAAP7///8B
+			AAAAAAAAABEAAAAEEAAAaAAAAAAAAAAFEAAA1AAAAAAAAAAQEAAA
+			AAEAAAAAAABAEAAA8AAAAAAAAAACIAAAzAEAAAAAAAAFIAAAPAEA
+			AAAAAAAQIAAATAEAAAAAAAARIAAAgAEAAAAAAAASIAAAYAEAAAAA
+			AAATIAAAcAEAAAAAAAAgIAAArAEAAAAAAAAwIAAA2AEAAAAAAAAB
+			wAAAIAEAAAAAAAARwAAAIAAAAAAAAAASwAAAMAEAAAAAAAAQ0AAA
+			BAAAAAAAAADgAQCABAIAAAAAAAA=
+			</data>
+			<key>FileURL</key>
+			<string>file:///Users/rpage/Sites/lsid-cache/.gitignore</string>
+			<key>HasSecurityScope</key>
+			<true/>
+			<key>RelativePath</key>
+			<string>./.gitignore</string>
 			<key>TypeID</key>
 			<string>_CFileLocator</string>
 			<key>Version</key>
@@ -277,7 +277,7 @@
 	<array>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -320,7 +320,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -363,7 +363,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -406,7 +406,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -447,7 +447,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -491,7 +491,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -534,7 +534,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -577,7 +577,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -620,7 +620,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -663,7 +663,7 @@
 		</dict>
 		<dict>
 			<key>Date</key>
-			<date>2022-02-07T19:29:01Z</date>
+			<date>2022-02-11T14:49:04Z</date>
 			<key>Location</key>
 			<dict>
 				<key>BookmarkData</key>
@@ -715,7 +715,7 @@
 	<false/>
 	<key>ViewSplitterPosition:rpage</key>
 	<real>0.23414070904254913</real>
-	<key>WindowFrame:rpage:displays([(0, 0), (1440, 900)]:[(-1920, 0), (1920, 1080)])</key>
-	<string>rect(70,-1344,940,-477)</string>
+	<key>WindowFrame:rpage:displays()</key>
+	<string>rect(75,-1279,945,-412)</string>
 </dict>
 </plist>
