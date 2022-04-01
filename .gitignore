@@ -10,3 +10,6 @@ Tester.request
 /nt/
 /tmp/*.xml
 /to-do/
+
+/oxigraph/
+!/oxigraph/README.md
