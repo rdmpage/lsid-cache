@@ -1,39 +1,33 @@
 <?php
 
-// For a data source extract all LSIDs from our cache and create a single file of triples
-
-
+// For a data source extract all LSIDs from our cache and upload to
+// triple store, each archived set of LSIDs is converted into a single XML document.
 
 error_reporting(E_ALL);
 
-require_once('vendor/autoload.php');
-
-$format_string = 'ntriples';
-$format = \EasyRdf\Format::getFormat($format_string);
-$serialiserClass  = $format->getSerialiserClass();
-$serialiser = new $serialiserClass();
-$options = array();
-$graph = new \EasyRdf\Graph();
-
+// triple store
+$triple_store_url 	= 'http://localhost:7878/store';
+$named_graph 		= '?default';
+$use_named_graphs 	= true;
+$upload				= true;
 
 // Path to local storage of LSID is the reverse of the domain name
 $domain_path = array(
 	'indexfungorum' => array('org', 'indexfungorum', 'names'),
 	'ion' => array('com', 'organismnames', 'name'),
-	'ipni_names' => array('org', 'ipni', 'names'),
-	'worms' => array('org', 'marinespecies', 'taxname'),
+	'ipni_names' => array('org', 'ipni', 'names')
 );
 
 // Pick a database to use
 $database = 'indexfungorum';
-$database = 'ion';
+//$database = 'ion';
 //$database = 'ipni_names';
 
+// Place to store decompressed XML files
 $tmp_dir = dirname(__FILE__) . '/tmp';
 
-// Fetch XML files
+// Fetch LSID XML files
 $basedir = dirname(__FILE__) . '/lsid/' . join('/', $domain_path[$database]);
-
 $files1 = scandir($basedir);
 
 // debug
@@ -41,6 +35,7 @@ $files1 = scandir($basedir);
 //$files1 = array('556');
 //$files1 = array('12');
 //$files1 = array('7714');
+$files1 = array('84');
 
 foreach ($files1 as $directory)
 {
@@ -75,7 +70,7 @@ foreach ($files1 as $directory)
 					$command = 'gunzip -c ' . $path  . ' >  ' . $xml_filename;					
 					system($command);
 					
-					// fix
+					// fix any source-specific XML issues
 					$xml = file_get_contents($xml_filename);
 					
 					switch ($database)
@@ -131,17 +126,9 @@ foreach ($files1 as $directory)
 					
 					// save
 					file_put_contents($xml_filename, $xml);
-					
-					$upload = true;
-					$use_named_graphs = true;
-					//$upload = false;
+										
 					if ($upload)
 					{
-						// Oxigraph
-						$triple_store_url = 'http://143.198.96.145:7878/store';
-						$named_graph = '?default';
-						$use_named_graphs = false;
-												
 						if ($use_named_graphs)
 						{
 							switch ($database)
@@ -166,14 +153,17 @@ foreach ($files1 as $directory)
 					
 						// send to triple store
 						$command = "curl '$triple_store_url$named_graph' -H 'Content-Type:application/rdf+xml' --data-binary '@$xml_filename' --progress-bar";					
-						$retval = 0;					
+						$retval = 0;	
+						
+						echo $command . "\n";
+										
 						system($command, $retval);
 					
 						echo "\nReturn value = $retval\n";						
 					}
 					
 					// clean up
-					// unlink($xml_filename);
+					//unlink($xml_filename);
 				}		
 			}
 		}		

@@ -5,6 +5,16 @@ https://crates.io/crates/oxigraph_server
 
 ## Installing
 
+### Local
+
+Start the server in the same directory that you want the server’s files stored. If you cd to that directory, then:
+
+```oxigraph_server -f .```
+
+The endpoint is http://localhost:7878
+
+### Cloud
+
 Create a DigitalOcean droplet manually, open console, and then install Docker:
 
 ```
@@ -41,7 +51,6 @@ curl http://143.198.96.145:7878/update -X POST -H 'Content-Type: application/spa
 
 ### Delete data from a specific source
 curl http://143.198.96.145:7878/update -X POST -H 'Content-Type: application/sparql-update' --data 'DELETE WHERE { ?s <http://purl.org/dc/elements/1.1/creator> <http://www.organismnames.com> . ?s ?p ?o .  }' 
-
 
 
 ## Clear named graph
