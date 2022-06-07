@@ -8,5 +8,15 @@ Resolve Life Science Identifiers (LSIDs) using a local cache.
 ## How it works
 I have built up an archive of the XML metadata for millions of LSIDs. A simple approach would be to simply put these millions of files onto a web server, but that number of files can quickly get messy. So I’ve grouped them into sets of up to 1000, gzipped them into archives, and put those on a server. When you request a LSID the service works out which archive has the metadata you want, extracts the metadata from that archive, and sends you the metadata (in the format you requested).
 
+## Problems with LSID data
+
+### Index Fungorum 
+
+IF includes the following statement:
+```
+<PublicationCitation:PublicationCitation rdf:nodeID="bnode0">
+```
+ In any XML file that has a `PublicationCitation`. This means every record gets the same bnode for its publication! Need to fix this.
+
 
 

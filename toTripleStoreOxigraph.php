@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 
 // triple store
 $triple_store_url 	= 'http://localhost:7878/store';
+$triple_store_url 	= 'http://95.217.23.82:7878/store';
 $named_graph 		= '?default';
 $use_named_graphs 	= true;
 $upload				= true;
